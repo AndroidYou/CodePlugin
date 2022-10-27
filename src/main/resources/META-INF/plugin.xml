@@ -1,0 +1,27 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.example.myplugin</id>
+
+    <!--插件名称 -->
+    <name>Myplugin</name>
+    <!--输入邮箱地址，公司名称-->
+    <vendor email="support@yourcompany.com"
+            url="https://www.yourcompany.com">YourCompany</vendor>
+    <description> 描述信息</description>
+    <!-- 依赖模块 -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.java</depends>
+    <extensions defaultExtensionNs="com.intellij">
+
+    </extensions>
+    <actions>
+        <!--插件id  类名  名称  描述-->
+        <action id="DialogPlugin" class="com.example.myplugin.DialogPlugin"
+                text="弹窗" description="弹出">
+            <keyboard-shortcut keymap="$default"
+                               first-keystroke="shift ctrl Y"/> <!--设置快捷键-->
+        </action>
+    </actions>
+</idea-plugin>
