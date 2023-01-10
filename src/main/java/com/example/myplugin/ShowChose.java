@@ -8,9 +8,12 @@ import com.intellij.openapi.editor.Caret;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.wm.ToolWindow;
+import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.psi.*;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.search.PsiShortNamesCache;
+import com.intellij.terminal.JBTerminalPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -69,11 +72,18 @@ public class ShowChose  extends JDialog{
         /**点击提交按钮生成代码**/
        commitButton.addActionListener(new AbstractAction() {
            @Override
-           public void actionPerformed(ActionEvent actionEvent) {
-               insertCode(allFields,editor);
+           public void actionPerformed(ActionEvent actionEvent) {insertCode(allFields,editor);
                hide();
+              /* ToolWindow terminal = ToolWindowManager.getInstance(event.getProject()).getToolWindow("Terminal");
+               JComponent root = terminal.getComponent();
+               terminal.show(() -> {
+                  JBTerminalPanel terminalPanel = ((JBTerminalPanel)((JLayeredPane)((JPanel)((JPanel)((JPanel)((JPanel)((JPanel)((JPanel)root.getComponent(0)).getComponent(0)).getComponent(0)).getComponent(0)).getComponent(0)).getComponent(0)).getComponent(0)).getComponent(0));
+
+                   terminalPanel.getTerminalOutputStream().sendString("git \n");
+               });*/
            }
        });
+
    }
     public void insertCode(PsiField[] psiField,Editor editor){
         for (int i = 0; i < psiField.length; i++) {
